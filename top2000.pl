@@ -6,6 +6,9 @@ use DaZeus;
 use Try::Tiny;
 
 my ($sock, $network, $channel) = @_;
+if(!$channel) {
+	die "Usage: $0 socket network channel";
+}
 
 my $json_url = "http://top2012.radio2.nl/data/cache/json/nowplaying.json";
 my $last_song_id;
