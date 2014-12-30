@@ -5,7 +5,7 @@ use JSON;
 use DaZeus;
 use Try::Tiny;
 
-my ($sock, $network, $channel) = @_;
+my ($sock, $network, $channel) = @ARGV;
 if(!$channel) {
 	die "Usage: $0 socket network channel";
 }
