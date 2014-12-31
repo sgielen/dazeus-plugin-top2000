@@ -24,8 +24,12 @@ while(1) {
 	}
 
 	my $score = find_score($song->{'artist'}, $song->{'title'}, \@songs) || "(unknown)";
+	my $next_song = $songs[$score - 2];
 
-	my $message = "TOP 2000 - #$score " . $song->{'artist'} . " - " . $song->{'title'} . " - Listen in: http://radioplayer.npo.nl/radio2/";
+	my $message = "TOP 2000 - #$score " . $song->{'artist'} . " - " . $song->{'title'};
+	if($next_song) {
+		$message .= "\nNext up: " . $next_song->[1] . " - " . $next_song->[2];
+	}
 	print $message . "\n";
 	try {
 		my $dazeus = DaZeus->connect($sock);
